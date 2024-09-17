@@ -1,44 +1,30 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-import { UserButton } from "@/app/(auth)/components/user-button";
+import Container from "@/components/ui/container";
+import MainNav from "@/components/main-nav";
+import NavbarActions from "@/components/navbar-actions";
+import getCategories from "@/actions/get-categories";
 
-export const Navbar = () => {
-  const pathname = usePathname();
+export const revalidate = 0;
+
+const Navbar = async () => {
+  const categories = await getCategories();
 
   return (
-    <nav className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[600px] shadow-sm">
-      <div className="flex gap-x-2">
-        <Button
-          asChild
-          variant={pathname === "/server" ? "default" : "outline"}
-        >
-          <Link href="/server">Server</Link>
-        </Button>
-        <Button
-          asChild
-          variant={pathname === "/client" ? "default" : "outline"}
-        >
-          <Link href="/client">Client</Link>
-        </Button>
-        <Button
-          asChild
-          variant={pathname === "/admin" ? "default" : "outline"}
-        >
-          <Link href="/admin">Admin</Link>
-        </Button>
-        <Button
-          asChild
-          variant={pathname === "/settings" ? "default" : "outline"}
-        >
-          <Link href="/settings">Settings</Link>
-        </Button>
-      </div>
-      <UserButton />
-    </nav>
+    <div className="border-b">
+      <Container>
+        <div className="realtive px-4 sm:px-6 lg:px-8 flex h-16  items-center">
+          <Link
+            href="/"
+            className="ml-4 flex lg:ml-0 gap-x-2"
+          >
+            <p className="font-bold text-xl">Store</p>
+          </Link>
+          <MainNav data={categories} />
+          <NavbarActions />
+        </div>
+      </Container>
+    </div>
   );
 };
 

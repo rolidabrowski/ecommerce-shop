@@ -1,9 +1,10 @@
 "use client";
 
+import { FaShoppingBag, FaUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { FaShoppingBag } from "react-icons/fa";
+import { LoginButton } from "@/components/auth/login-button";
 
 const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -25,6 +26,15 @@ const NavbarActions = () => {
         />
         <span className="ml-2 text-sm font-medium text-white">0</span>
       </Button>
+      <LoginButton asChild>
+        <Button className="flex items-center gap-x-2 rounded-full bg-black px-4 py-2">
+          <FaUser
+            size={20}
+            color="white"
+          />
+          Zaloguj się
+        </Button>
+      </LoginButton>
     </div>
   );
 };

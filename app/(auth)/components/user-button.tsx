@@ -12,7 +12,7 @@ import {
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { LogoutButton } from "@/components/auth/logout-button";
+import { LogoutButton } from "@/app/(auth)/components/logout-button";
 
 export const UserButton = () => {
   const user = useCurrentUser();

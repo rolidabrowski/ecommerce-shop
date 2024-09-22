@@ -4,7 +4,7 @@ import { FaShoppingBag, FaUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { LoginButton } from "@/components/auth/login-button";
+import { LoginButton } from "@/app/(auth)/components/login-button";
 
 const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);

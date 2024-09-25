@@ -3,20 +3,29 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaExpand, FaShoppingCart } from "react-icons/fa";
+import { MouseEventHandler } from "react";
 
 import { Product } from "@/types";
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
+import usePreviewModal from "@/hooks/use-preview-modal";
 
 interface ProductCard {
   data: Product;
 }
 
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
+  const previewModal = usePreviewModal();
   const router = useRouter();
 
   const handleClick = () => {
     router.push(`/product/${data?.id}`);
+  };
+
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (Event) => {
+    Event.stopPropagation();
+
+    previewModal.onOpen(data);
   };
 
   return (
@@ -35,7 +44,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton
-              onClick={() => {}}
+              onClick={onPreview}
               icon={
                 <FaExpand
                   size={20}

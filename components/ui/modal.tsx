@@ -42,7 +42,10 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
               <DialogPanel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle">
                 <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <div className="absolute right-4 top-4">
-                    <Cross2Icon onClick={onClose} />
+                    <Cross2Icon
+                      onClick={onClose}
+                      className="h-5 w-5"
+                    />
                   </div>
                   {children}
                 </div>
